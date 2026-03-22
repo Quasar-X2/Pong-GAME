@@ -1,7 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <style>
+      /* This part centers the game */
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center; /* Centers horizontally */
+        align-items: center;     /* Centers vertically */
+        height: 100vh;           /* Sets height to 100% of the screen */
+        background-color: #000;  /* Matches your game background */
+        overflow: hidden;        /* Prevents scrollbars */
+      }
+      canvas {
+        display: block;
+        border: 2px solid #555; /* Optional: adds a subtle border to the game */
+      }
+    </style>
   </head>
   <body>
     <script src="script.js"></script>
