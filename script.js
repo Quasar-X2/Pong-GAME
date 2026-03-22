@@ -9,7 +9,6 @@ let cornerRadius = 10;
 let leftScore, rightScore;
 
 let gameState = "menu";
-let timer = 3;
 let fadeAlpha = 0;
 
 function setup() {
@@ -26,8 +25,6 @@ function draw() {
 
   if (gameState === "menu") {
     showMenu();
-  } else if (gameState === "countdown") {
-    showCountdown();
   } else if (gameState === "play") {
     playGame();
   } else if (gameState === "gameOver") {
@@ -41,33 +38,15 @@ function showMenu() {
   textSize(50);
   text("PONG", width / 2, height / 2 - 50);
   textSize(20);
-  text("Left Player Controls: W & S", width / 2, height / 2 + 20);
-  text("Right Player Controls: Up & Down Arrows", width / 2, height / 2 + 50);
+  text("Left Player: W / S", width / 2, height / 2 + 20);
+  text("Right Player: Up / Down Arrows", width / 2, height / 2 + 50);
   textSize(25);
   fill(245, 243, 152);
   text("Press SPACE to Start", width / 2, height / 2 + 120);
+  
   if (keyIsDown(32)) {
-    gameState = "countdown";
-    timer = 3;
-    fadeAlpha = 0; 
-  }
-}
-
-function showCountdown() {
-  drawArena();
-  filter(BLUR, 3); // Applies blur to everything drawn so far
-  
-  fill(255);
-  noStroke();
-  textSize(100);
-  textAlign(CENTER, CENTER);
-  text(ceil(timer), width / 2, height / 2);
-  
-  if (frameCount % 60 === 0 && timer > 0) {
-    timer--;
-  }
-  if (timer <= 0) {
     gameState = "play";
+    fadeAlpha = 0; 
   }
 }
 
@@ -133,8 +112,7 @@ function showGameOver() {
       leftScore = 0;
       rightScore = 0;
       fadeAlpha = 0;
-      gameState = "countdown";
-      timer = 3;
+      gameState = "play";
       resetBall(1);
     }
   }
